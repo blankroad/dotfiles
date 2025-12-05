@@ -34,6 +34,8 @@ echo -e "${GREEN}[3/5] Installing vim-plug...${NC}"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+mkdir -p ~/.vim/swap ~/.vim/undo
+
 # ==============================================================================
 # 3. Link .vimrc (Symlink)
 # ==============================================================================
@@ -49,10 +51,10 @@ fi
 # Link file (Assuming you have cloned the repo in previous steps)
 # If the file doesn't exist yet, we create a placeholder so setup doesn't fail
 if [ -f "$DOTFILES_DIR/.vimrc" ]; then
-    ln -sf "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
-    echo "Linked ~/dotfiles/.vimrc to ~/.vimrc"
+    ln -sf "$DOTFILES_DIR/vimrc" "$HOME/.vimrc"
+    echo "Linked ~/dotfiles/vimrc to ~/.vimrc"
 else
-    echo "Warning: ~/dotfiles/.vimrc not found. Creating a temporary one."
+    echo "Warning: ~/dotfiles/vimrc not found. Creating a temporary one."
     touch "$HOME/.vimrc"
 fi
 
